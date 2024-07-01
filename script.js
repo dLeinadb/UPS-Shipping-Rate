@@ -61,18 +61,12 @@ document.getElementById('shipping-form').addEventListener('submit', async functi
     }
 });
 
-async function getToken(client_id, client_secret) {
-    const url = 'https://onlinetools.ups.com/security/v1/oauth/token';
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const payload = new URLSearchParams({ 'grant_type': 'client_credentials' });
-
-    const response = await fetch(proxyUrl + url, {
+async function getToken() {
+    const response = await fetch('http://localhost:3000/get-token', {
         method: 'POST',
         headers: {
-            'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
         },
-        body: payload,
     });
     const json = await response.json();
     return json.access_token;
