@@ -63,10 +63,10 @@ document.getElementById('shipping-form').addEventListener('submit', async functi
 
 async function getToken(client_id, client_secret) {
     const url = 'https://onlinetools.ups.com/security/v1/oauth/token';
-    const payload = new URLSearchParams({
-        'grant_type': 'client_credentials',
-    });
-    const response = await fetch(url, {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const payload = new URLSearchParams({ 'grant_type': 'client_credentials' });
+
+    const response = await fetch(proxyUrl + url, {
         method: 'POST',
         headers: {
             'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
