@@ -61,6 +61,11 @@ document.getElementById('shipping-form').addEventListener('submit', async functi
     }
 });
 
+fetch('http://localhost:3000/get-token', { mode: 'cors' })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error fetching data:', error));
+
 async function getToken() {
     const response = await fetch('http://localhost:3000/get-token', {
         method: 'POST',
