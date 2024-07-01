@@ -159,6 +159,7 @@ async function getShippingCost(accessToken, shipper_info, to_address_info, from_
             'Content-Type': 'application/json',
             'transId': 'string',
             'transactionSrc': 'testing',
+            'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify(payload),
     });
